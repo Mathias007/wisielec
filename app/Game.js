@@ -37,7 +37,8 @@ class Game {
         this.quote = new Quote(text);
     }
 
-    guess(letter) {
+    guess(letter, event) {
+        event.target.disabled = true;
         this.quote.guess(letter);
         this.drawQuote();
     }
@@ -47,7 +48,9 @@ class Game {
             const label = (i + 10).toString(36);
             const button = document.createElement("button");
             button.innerHTML = label;
-            button.addEventListener("click", () => this.guess(label));
+            button.addEventListener("click", (event) =>
+                this.guess(label, event)
+            );
             this.lettersWrapper.appendChild(button);
         }
     }
