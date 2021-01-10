@@ -2,19 +2,19 @@ import { Quote } from "./Quote.js";
 class Game {
     quotes = [
         {
-            text: "Pan Tadeusz",
+            text: "pan tadeusz",
             category: "Utwór literacki",
         },
         {
-            text: "Janko Muzykant",
+            text: "janko muzykant",
             category: "Utwór literacki",
         },
         {
-            text: "Akademia Pana Kleksa",
+            text: "akademia pana kleksa",
             category: "Film",
         },
         {
-            text: "Ogniem i mieczem",
+            text: "ogniem i mieczem",
             category: "Film",
         },
     ];
@@ -38,7 +38,8 @@ class Game {
     }
 
     guess(letter) {
-        console.log(letter);
+        this.quote.guess(letter);
+        this.drawQuote();
     }
 
     drawLetters() {
@@ -51,7 +52,22 @@ class Game {
         }
     }
 
+    drawQuote() {
+        const content = this.quote.getContent();
+        this.wordWrapper.innerHTML = content;
+    }
+
     start() {
         this.drawLetters();
+        this.drawQuote();
     }
 }
+
+const game = new Game({
+    lettersWrapper: document.getElementById("letters"),
+    categoryWrapper: document.getElementById("category"),
+    wordWrapper: document.getElementById("word"),
+    outputWrapper: document.getElementById("output"),
+});
+
+game.start();
