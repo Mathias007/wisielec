@@ -49,13 +49,10 @@ class Game {
             document.getElementsByClassName("step")[
                 this.currentStep
             ].style.opacity = 1;
-
             if (this.currentStep === this.lastStep) {
                 this.loosing();
             }
         }
-        this.quote.guess(letter);
-        this.drawQuote();
     }
 
     drawLetters() {
